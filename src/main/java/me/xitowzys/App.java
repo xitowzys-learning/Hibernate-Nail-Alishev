@@ -21,15 +21,19 @@ public class App
             session.beginTransaction();
 
 
-            List<Person> personList = new ArrayList<Person>();
+            Person person = session.get(Person.class, 2);
+//            person.setName("New name");
+            session.remove(person);
 
-            for (int i = 0; i < 3; i++) {
-                personList.add(new Person("Test " + 1, 10 * (i + 1)));
-            }
-
-            for (Person person: personList) {
-                session.persist(person);
-            }
+//            List<Person> personList = new ArrayList<Person>();
+//
+//            for (int i = 0; i < 3; i++) {
+//                personList.add(new Person("Test " + 1, 10 * (i + 1)));
+//            }
+//
+//            for (Person person: personList) {
+//                session.persist(person);
+//            }
 
 
 //            Person person = session.get(Person.class, 1);
