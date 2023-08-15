@@ -8,10 +8,8 @@ import org.hibernate.cfg.Configuration;
 import java.util.ArrayList;
 import java.util.List;
 
-public class App 
-{
-    public static void main( String[] args )
-    {
+public class App {
+    public static void main(String[] args) {
         Configuration configuration = new Configuration().addAnnotatedClass(Person.class);
 
         SessionFactory sessionFactory = configuration.buildSessionFactory();
@@ -23,7 +21,14 @@ public class App
 
             Person person = session.get(Person.class, 2);
 //            person.setName("New name");
-            session.remove(person);
+//            session.remove(person);
+//            List<Person> people = session.createSelectionQuery("FROM Person WHERE age > 20", Person.class).getResultList();
+//
+//            for (Person per: people) {
+//                System.out.println(per);
+//            }
+
+            session.createQuery("UPDATE Person SET name='Test New' WHERE age < 30", null).executeUpdate();
 
 //            List<Person> personList = new ArrayList<Person>();
 //
